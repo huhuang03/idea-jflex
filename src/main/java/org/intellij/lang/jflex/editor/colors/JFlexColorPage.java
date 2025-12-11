@@ -6,7 +6,6 @@ import com.intellij.openapi.fileTypes.SyntaxHighlighterFactory;
 import com.intellij.openapi.options.colors.AttributesDescriptor;
 import com.intellij.openapi.options.colors.ColorDescriptor;
 import com.intellij.openapi.options.colors.ColorSettingsPage;
-import com.intellij.lang.LanguageParserDefinitions;
 import com.intellij.lang.Language;
 import org.intellij.lang.jflex.JFlexLanguage;
 import org.intellij.lang.jflex.editor.JFlexHighlighterColors;
@@ -24,7 +23,7 @@ final class JFlexColorPage implements ColorSettingsPage {
     private static final AttributesDescriptor[] EMPTY_ATTRIBUTES_DESCRIPTOR_ARRAY = new AttributesDescriptor[]{};
     private static final ColorDescriptor[] EMPTY_COLOR_DESCRIPTOR_ARRAY = new ColorDescriptor[]{};
 
-    private final Set<AttributesDescriptor> attributeDescriptors = new HashSet<AttributesDescriptor>();
+    private final Set<AttributesDescriptor> attributeDescriptors = new HashSet<>();
 
     public JFlexColorPage() {
         attributeDescriptors.add(new AttributesDescriptor("Angle brackets", JFlexHighlighterColors.ANGLE_BRACKETS));
@@ -67,19 +66,20 @@ final class JFlexColorPage implements ColorSettingsPage {
     @NonNls
     @NotNull
     public String getDemoText() {
-        return "package org.intellij.lang.jflex;\n" +
-                "%%\n" +
-                "%class Lexer\n" +
-                "/* Macros */\n" +
-                "LineTerminator = \\r|\\n|\\r\\n\n" +
-                "WhiteSpace = ({LineTerminator} | [ \\t\\f])+\n" +
-                "// States\n" +
-                "%state SAMPLE\n" +
-                "%%\n" +
-                "<SAMPLE, YYINITIAL> {\n" +
-                "  // Rule\n" +
-                "  \"foo\" { foo(); }\n" +
-                "}";
+        return """
+            package org.intellij.lang.jflex;
+            %%
+            %class Lexer
+            /* Macros */
+            LineTerminator = \\r|\\n|\\r\\n
+            WhiteSpace = ({LineTerminator} | [ \\t\\f])+
+            // States
+            %state SAMPLE
+            %%
+            <SAMPLE, YYINITIAL> {
+              // Rule
+              "foo" { foo(); }
+            }""";
     }
 
     @NotNull
@@ -93,8 +93,7 @@ final class JFlexColorPage implements ColorSettingsPage {
         return SyntaxHighlighterFactory.getSyntaxHighlighter(jflexLanguage, null, null);
     }
 
-    @Nullable
-    public Icon getIcon() {
-        return JFlexFileType.FILE_TYPE.getIcon();
+    public @NotNull Icon getIcon() {
+        return JFlexFileType.INSTANCE.getIcon();
     }
 }

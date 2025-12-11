@@ -82,7 +82,7 @@ public class JFlexPsiFileImpl extends PsiFileBase implements JFlexPsiFile {
 
     @NotNull
     public FileType getFileType() {
-        return JFlexFileType.FILE_TYPE;
+        return JFlexFileType.INSTANCE;
     }
 
     public String toString() {
