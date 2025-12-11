@@ -1,3 +1,5 @@
+Find a Jetbrians official plugin `Gramma-Kit` that do better work.
+
 # idea-jflex
 
 A Plugin for IntelliJ IDEA to enable JFlex support.
