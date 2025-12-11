@@ -11,7 +11,7 @@ object JFlexFileType : LanguageFileType(JFlexLanguage.LANGUAGE) {
     const val DEFAULT_EXTENSION = "flex"
 
     val ICON: Icon by lazy {
-        IconLoader.getIcon("/icons/fileTypes/jflex.png", JFlexFileType::class.java)
+        IconLoader.getIcon("/fileTypes/jflex.png", JFlexFileType::class.java)
     }
 
     override fun getName(): String = "JFlex"
