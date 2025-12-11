@@ -2,19 +2,6 @@
     <name>JFlex Support</name>
     <version>1.7</version>
     <vendor>Alexey Efimov, Max Ishchenko, Jan Dolecek, Steve Rowe, Régis Décamps</vendor>
-    <change-notes><![CDATA[v1.7
-    <ul>
-    <li>Update for JFlex 1.7.0.
-    </ul>
-
-    v1.6.1
-    <ul>
-    <li>Updated for JFlex 1.6.1
-    <li>.jflex extension added to JFlex file type. (Steve Rowe)
-    </ul>
-    ]]>
-    </change-notes>
-
     <description>Enables JFlex support in IntelliJ IDEA.</description>
     <resource-bundle>org.intellij.lang.jflex.util.JFlexBundle</resource-bundle>
 
@@ -28,6 +15,7 @@
     -->
 
     <extensions defaultExtensionNs="com.intellij">
+        <postStartupActivity implementation="org.intellij.lang.jflex.compiler.JFlexVfsListener"/>
         <applicationConfigurable implementation="org.intellij.lang.jflex.options.JFlexConfigurable"/>
         <colorSettingsPage implementation="org.intellij.lang.jflex.editor.colors.JFlexColorPage"/>
         <lang.parserDefinition language="JFlex" implementationClass="org.intellij.lang.jflex.parser.JFlexParserDefinition"/>
