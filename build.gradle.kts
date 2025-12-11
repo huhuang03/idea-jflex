@@ -14,9 +14,17 @@ repositories {
     }
 }
 
-// Kotlin 编译器版本
+tasks {
+    withType<JavaCompile> {
+        sourceCompatibility = "21"
+        targetCompatibility = "21"
+    }
+}
+
 kotlin {
-    jvmToolchain(17) // 现代 IDEA 插件推荐使用 Java 17
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
+    }
 }
 
 dependencies {
