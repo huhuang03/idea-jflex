@@ -12,6 +12,6 @@ import org.jetbrains.annotations.NotNull;
 public final class JFlexFileTypeFactory extends FileTypeFactory {
     @Override
     public void createFileTypes(@NotNull FileTypeConsumer consumer) {
-        consumer.consume(JFlexFileType.FILE_TYPE, "flex;jflex");
+        consumer.consume(JFlexFileType.INSTANCE, "flex;jflex");
     }
 }

@@ -1,6 +1,6 @@
 package org.intellij.lang.jflex.injection;
 
-import com.intellij.lang.StdLanguages;
+import com.intellij.lang.java.JavaLanguage;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.InjectedLanguagePlaces;
 import com.intellij.psi.LanguageInjector;
@@ -22,11 +22,14 @@ public class JFlexJavaInjector implements LanguageInjector {
         settings = JFlexSettings.getInstance();
     }
 
+    @Override
     public void getLanguagesToInject(@NotNull PsiLanguageInjectionHost _host, @NotNull InjectedLanguagePlaces registrar) {
 
         if (_host instanceof JFlexJavaCode) {
 
-            if (!settings.ENABLED_EMBED_JAVA) return;
+            if (!settings.ENABLED_EMBED_JAVA) {
+                return;
+            }
 
             JFlexJavaCode host = (JFlexJavaCode) _host;
 
@@ -36,7 +39,7 @@ public class JFlexJavaInjector implements LanguageInjector {
             JFlexJavaCode importSection = file.getImports();
             //processing imports and package section
             if (importSection == host) {
-                registrar.addPlace(StdLanguages.JAVA, new TextRange(0, host.getTextLength()), null, "\npublic class a{}");
+                registrar.addPlace(JavaLanguage.INSTANCE, new TextRange(0, host.getTextLength()), null, "\npublic class a{}");
                 return;
             }
 
@@ -84,7 +87,7 @@ public class JFlexJavaInjector implements LanguageInjector {
                 suffix.append("}");
             }
 
-            registrar.addPlace(StdLanguages.JAVA, new TextRange(0, host.getTextLength()), prefix.toString(), suffix.toString());
+            registrar.addPlace(JavaLanguage.INSTANCE, new TextRange(0, host.getTextLength()), prefix.toString(), suffix.toString());
 
         }
 

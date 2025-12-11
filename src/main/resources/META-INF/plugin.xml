@@ -15,20 +15,22 @@
     -->
 
     <extensions defaultExtensionNs="com.intellij">
-        <postStartupActivity implementation="org.intellij.lang.jflex.compiler.JFlexVfsListener"/>
         <applicationConfigurable implementation="org.intellij.lang.jflex.options.JFlexConfigurable"/>
         <colorSettingsPage implementation="org.intellij.lang.jflex.editor.colors.JFlexColorPage"/>
-        <lang.parserDefinition language="JFlex" implementationClass="org.intellij.lang.jflex.parser.JFlexParserDefinition"/>
-        <lang.documentationProvider language="JFlex" implementationClass="org.intellij.lang.jflex.JFlexDocumentationProvider"/>
-        <lang.findUsagesProvider language="JFlex" implementationClass="org.intellij.lang.jflex.JFlexFindUsagesProvider"/>
+        <lang.parserDefinition language="JFlex"
+                               implementationClass="org.intellij.lang.jflex.parser.JFlexParserDefinition"/>
+        <lang.documentationProvider language="JFlex"
+                                    implementationClass="org.intellij.lang.jflex.JFlexDocumentationProvider"/>
+        <lang.findUsagesProvider language="JFlex"
+                                 implementationClass="org.intellij.lang.jflex.JFlexFindUsagesProvider"/>
         <lang.commenter language="JFlex" implementationClass="org.intellij.lang.jflex.JFlexCommenter"/>
         <annotator language="JFlex" implementationClass="org.intellij.lang.jflex.validation.JFlexAnnotatingVisitor"/>
-        <languageInjector implementation="org.intellij.lang.jflex.injection.JFlexJavaInjector" />
-        <fileTypeFactory implementation="org.intellij.lang.jflex.fileTypes.JFlexFileTypeFactory" />
-        <compilerFactory implementation="org.intellij.lang.jflex.compiler.JFlexCompilerFactory" />
+        <languageInjector implementation="org.intellij.lang.jflex.injection.JFlexJavaInjector"/>
+        <fileTypeFactory implementation="org.intellij.lang.jflex.fileTypes.JFlexFileTypeFactory"/>
+        <postStartupActivity implementation="org.intellij.lang.jflex.compiler.JFlexStartupActivity"/>
 
         <applicationService serviceInterface="org.intellij.lang.jflex.options.JFlexSettings"
-                            serviceImplementation="org.intellij.lang.jflex.options.JFlexSettings" />
+                            serviceImplementation="org.intellij.lang.jflex.options.JFlexSettings"/>
     </extensions>
 
     <actions>
